@@ -1,0 +1,16 @@
+parameters:
+    sam_applications.type.class: CanalTP\SamEcoreSecurityBundle\Form\Type\ApplicationsType
+
+services:
+    security.access.application_voter:
+        class:      CanalTP\SamEcoreSecurityBundle\Security\Authorization\Voter\ApplicationVoter
+        public:     false
+        tags:
+            - { name: security.voter }
+
+    security.access.business_right_voter:
+        class:      CanalTP\SamEcoreSecurityBundle\Security\Authorization\Voter\BusinessRightVoter
+        arguments: ['@doctrine.orm.entity_manager', '@canal_tp_sam.application.finder']
+        public:     false
+        tags:
+            - { name: security.voter }

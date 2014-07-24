@@ -1,0 +1,18 @@
+{% block sam_role_widget %}
+{% spaceless %}
+    {{ form_row(form.name) }}
+    {{ form_row(form.applications) }}
+    <table class="table table-bordered">
+    {% for applications in form.roleParents %}
+        {% for applicationRoleParents in applications %}
+        <tr>
+            <td>
+            {{ form_label(applicationRoleParents) }}
+            {{ form_widget(applicationRoleParents) }}
+            </td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+    </table>
+{% endspaceless %}
+{% endblock sam_role_widget %}

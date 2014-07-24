@@ -1,0 +1,59 @@
+{% extends "CanalTPSamCoreBundle:form:generic_list.html.twig" %}
+
+{% block list_title -%}
+    {{'business_right.edit.title'|trans({}, 'default')}}
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="current">
+        <a href="{{ path('sam_security_business_right_edit', {'appId' : appId}) }}">
+            {{'sam.breadcrumb_permission'|trans}}
+        </a>
+    </li>
+{% endblock %}
+
+{% block table_head -%}
+    <th>{{'business_right.edit.column.permission.title'|trans({}, 'default')}}</th>
+    {% for role in form.roles %}
+        <th>{{ role.vars.value.name }}</th>
+    {% endfor %}
+{% endblock %}
+
+{% block table_body -%}
+    {% for key, permission in form.roles[0].businessPermissions.vars.choices %}
+        <tr>
+            <td>
+                {{ permission.data.name }}<br>
+                <i>{{ permission.data.description }}</i>
+            </td>
+            {% for role in form.roles %}
+            <td>
+                {{ form_widget(role.businessPermissions[key]) }}
+            </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block main_content -%}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ parent() }}
+
+    <button class="btn btn-success" type="submit">
+        <span class="glyphicon glyphicon-floppy-disk"></span> {{'business_right.edit.submit'|trans({}, 'default')}}
+    </button>
+    
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block left_menu -%}
+<div class="row">
+    <div class="list-group">
+        {% for application in applications %}
+            <a href="{{ path('sam_security_business_right_edit', { 'appId':application.id }) }}"class="list-group-item {% if appId == application.id %} active {% endif %}">{{ application.name }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

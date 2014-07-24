@@ -1,0 +1,7 @@
+canal_tp_sam_ecore_security:
+    resource: "@CanalTPSamEcoreSecurityBundle/Resources/config/routing/security.yml"
+    prefix:   /security
+
+sam_role_all:
+    resource: "@CanalTPSamEcoreSecurityBundle/Resources/config/routing/role.yml"
+    prefix:   /role

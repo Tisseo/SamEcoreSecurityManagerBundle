@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block left_menu -%}
+    {% include 'CanalTPSamEcoreSecurityBundle:Role:common_menu.html.twig' %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="current">
+        <a href="{{ path('sam_role') }}">
+            {{'sam.breadcrumb_role'|trans}}
+        </a>
+    </li>
+    <li class="current">
+        <a href="{{ path('sam_role_delete', {'id':entity.id} ) }}">
+            {{'sam.breadcrumb_role.delete'|trans}}
+        </a>
+    </li>
+{% endblock %}
+
+{% block main_content %}
+    <h1>{{ 'role.delete.title'|trans({'%name%':entity.name}) }}</h1>
+    <hr/>
+    {{ form_start(delete_form, { 'style': 'horizontal' }) }}
+
+        {{ form_widget(delete_form) }}
+        <p>{{ 'role.delete.confirm'|trans({'%name%':entity.name}) }}</p>
+        <hr/>
+        <button class="btn btn-danger" type="submit">
+            <span class="glyphicon glyphicon-trash"></span> {{'ctp_core.delete.short'|trans({}, 'messages') }}
+        </button>
+        <a href="{{ path('sam_role') }}" class="btn btn-default">{{'ctp_core.cancel'|trans({}, 'messages')}}</a>
+    {{ form_end(delete_form) }}
+
+{% endblock %}

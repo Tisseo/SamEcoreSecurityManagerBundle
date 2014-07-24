@@ -1,0 +1,56 @@
+{% extends 'CanalTPSamEcoreUserManagerBundle::generic_list.html.twig' %}
+
+{% block left_menu -%}
+    {% include 'CanalTPSamEcoreSecurityBundle:Role:common_menu.html.twig' with {'link_list': false} %}
+{% endblock %}
+
+{% block list_title -%}{{ 'role.list.title'|trans }}{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="current">
+        <a href="{{ path('sam_role') }}">
+            {{'sam.breadcrumb_role'|trans}}
+        </a>
+    </li>
+{% endblock %}
+
+{% block table_head -%}
+    <th>{{ 'role.field.name'|trans }}</th>
+    <th>{{ 'role.field.role'|trans }}</th>
+    <th>{{ 'role.field.application'|trans }}</th>
+    {% if is_granted('BUSINESS_MANAGE_ROLE') %}
+        <th>Actions</th>
+    {% endif %}
+{% endblock %}
+
+{% block table_body -%}
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.canonicalName }}</td>
+            <td>{{ entity.application.name }}</td>
+            {% if is_granted('BUSINESS_MANAGE_ROLE') %}
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-default" href="{{ path('sam_role_edit', { 'id': entity.id }) }}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            {{'ctp_core.edit.short'|trans({}, "messages")}}
+                        </a>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only">{{'ctp_core.toggle_menu'|trans}}</span>
+                        </button>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li>
+                                <a class="danger" href="{{ path('sam_role_delete', { 'id': entity.id }) }}">
+                                    <span class="glyphicon glyphicon-trash"></span> {{'ctp_core.delete.short'|trans({}, "messages")}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+{% endblock %}

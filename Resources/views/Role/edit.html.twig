@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block left_menu -%}
+    {% include 'CanalTPSamEcoreSecurityBundle:Role:common_menu.html.twig' %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="current">
+        <a href="{{ path('sam_role') }}">
+            {{'sam.breadcrumb_role'|trans}}
+        </a>
+    </li>
+    <li class="current">
+        <a href="{{ path('sam_role_edit', {'id':entity.id} ) }}">
+            {{'sam.breadcrumb_role.edit'|trans}}
+        </a>
+    </li>
+{% endblock %}
+
+{% block main_content %}
+
+    <h1>{{ 'role.edit.title'|trans({'%name%':entity.name}) }}</h1>
+    <hr/>
+
+    {{ form_start(edit_form, { 'style': 'horizontal' }) }}
+
+        {{ form_widget(edit_form) }}
+        <hr/>
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-success" type="submit">
+                    <span class="glyphicon glyphicon-pencil"></span> {{'ctp_core.edit.short'|trans({}, 'messages')}}
+                </button>
+            </div>
+        </div>
+    {{ form_end(edit_form) }}
+
+{% endblock %}

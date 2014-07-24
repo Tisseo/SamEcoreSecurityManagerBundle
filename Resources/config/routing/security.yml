@@ -1,0 +1,9 @@
+sam_security_business_right_edit:
+    pattern: /business/right/edit
+    defaults: { _controller: CanalTPSamEcoreSecurityBundle:BusinessRight:edit }
+
+sam_security_business_right_edit_switch_app:
+    pattern: /business/right/edit/switch/{application}
+    defaults: { _controller: CanalTPSamEcoreSecurityBundle:BusinessRight:switchEditApp }
+    requirements:
+        applicationId: \d+
