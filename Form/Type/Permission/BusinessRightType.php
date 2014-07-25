@@ -8,8 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use CanalTP\SamEcoreApplicationManagerBundle\Security\BusinessComponentRegistry;
-use CanalTP\SamEcoreApplicationManagerBundle\Security\BusinessPermission;
+use CanalTP\SamEcoreApplicationManagerBundle\Component\BusinessComponentRegistry;
+use CanalTP\SamEcoreApplicationManagerBundle\Permission\BusinessPermission;
 
 class BusinessRightType extends AbstractType
 {
