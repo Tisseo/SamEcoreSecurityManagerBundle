@@ -5,8 +5,6 @@ namespace CanalTP\SamEcoreSecurityBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CanalTP\SamEcoreSecurityBundle\Form\Type\Permission\ApplicationRoleType;
-use CanalTP\SamCoreBundle\Entity\BusinessRight;
-use CanalTP\SamEcoreApplicationManagerBundle\Security\BusinessPermission;
 
 class BusinessRightController extends Controller
 {
