@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use CanalTP\SamCoreBundle\Entity\Role;
 use CanalTP\SamCoreBundle\Entity\UserApplicationRole;
 use CanalTP\SamCoreBundle\Entity\Application;
-use CanalTP\SamBundle\CanalTPSamBundle;
+use CanalTP\SamCoreBundle\CanalTPSamCoreBundle;
 
 class CreateRoleListener implements EventSubscriberInterface
 {
