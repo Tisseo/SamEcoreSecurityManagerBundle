@@ -115,8 +115,6 @@ class RoleController extends AbstractController
     {
         $this->isAllowed('BUSINESS_MANAGE_ROLE');
 
-        $em = $this->getDoctrine()->getManager();
-
         if (!$role) {
             throw $this->createNotFoundException('Unable to find Role entity.');
         }
