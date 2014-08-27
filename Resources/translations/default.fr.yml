@@ -12,3 +12,11 @@ role.field.role: __role.field.role
 role.field.application: __role.field.application
 ctp_core.toggle_menu: __ctp_core.toggle_menu
 role.new.title: __role.new.title
+role:
+    list:
+        add: Ajouter un rôle
+        back: Annuler
+    edit:
+        short: Editer
+    delete:
+        short: Supprimer

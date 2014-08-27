@@ -1,4 +1,4 @@
-{% extends 'CanalTPSamEcoreUserManagerBundle::generic_list.html.twig' %}
+{% extends "CanalTPSamCoreBundle::generic_list.html.twig" %}
 
 {% block left_menu -%}
     {% include 'CanalTPSamEcoreSecurityBundle:Role:common_menu.html.twig' with {'link_list': false} %}
@@ -35,7 +35,7 @@
                     <div class="btn-group">
                         <a class="btn btn-default" href="{{ path('sam_role_edit', { 'id': entity.id }) }}">
                             <span class="glyphicon glyphicon-pencil"></span>
-                            {{'ctp_core.edit.short'|trans({}, "messages")}}
+                            {{'role.edit.short'|trans({}, "default")}}
                         </a>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
@@ -44,7 +44,7 @@
                         <ul class="dropdown-menu pull-right" role="menu">
                             <li>
                                 <a class="danger" href="{{ path('sam_role_delete', { 'id': entity.id }) }}">
-                                    <span class="glyphicon glyphicon-trash"></span> {{'ctp_core.delete.short'|trans({}, "messages")}}
+                                    <span class="glyphicon glyphicon-trash"></span> {{'role.delete.short'|trans({}, "default")}}
                                 </a>
                             </li>
                         </ul>
