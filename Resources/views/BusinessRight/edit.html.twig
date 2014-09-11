@@ -24,8 +24,8 @@
     {% for key, permission in form.roles[0].businessPermissions.vars.choices %}
         <tr>
             <td>
-                {{ permission.data.name }}<br>
-                <i>{{ permission.data.description }}</i>
+                {{ permission.data.name|trans({}, 'permissions') }}<br>
+                <i>{{ permission.data.description|trans({}, 'permissions') }}<br></i>
             </td>
             {% for role in form.roles %}
             <td>
@@ -44,7 +44,7 @@
     <button class="btn btn-success" type="submit">
         <span class="glyphicon glyphicon-floppy-disk"></span> {{'business_right.edit.submit'|trans({}, 'default')}}
     </button>
-    
+
     {{ form_end(form) }}
 {% endblock %}
 
