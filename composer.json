@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Sam e-core security bundle",
     "keywords": ["sam", "security"],
-    "homepage": "http://hg.prod.canaltp.fr/Sam/CanalTPSamEcoreSecurityBundle.git",
+    "homepage": "https://github.com/CanalTP/SamEcoreSecurityManagerBundle",
     "license": "MIT",
     "authors": [
         {
