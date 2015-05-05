@@ -86,11 +86,15 @@ class RoleController extends AbstractController
             }
 
             foreach ($model->rolesByApplication as $app) {
-                if (in_array($app->getId(), $selectedApps) && !is_null($app->getRole())) {
+                if (in_array($app->getId(), $selectedApps)) {
+                    $permissions = null === $app->getRole()
+                        ? array()
+                        : $app->getRole()->getPermissions();
+
                     $role = new Role();
                     $role->setName($model->role->getName());
                     $role->setApplication($app);
-                    $role->setPermissions($app->getRole()->getPermissions());
+                    $role->setPermissions($permissions);
                     $em->persist($role);
                 }
             }
