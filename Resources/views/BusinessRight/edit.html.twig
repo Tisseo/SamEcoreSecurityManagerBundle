@@ -49,11 +49,9 @@
 {% endblock %}
 
 {% block left_menu -%}
-<div class="row">
-    <div class="list-group">
-        {% for application in applications %}
-            <a href="{{ path('sam_security_business_right_edit', { 'appId':application.id }) }}"class="list-group-item {% if appId == application.id %} active {% endif %}">{{ application.name }}</a>
-        {% endfor %}
-    </div>
+<div class="list-group">
+    {% for application in applications %}
+        <a href="{{ path('sam_security_business_right_edit', { 'appId':application.id }) }}"class="list-group-item {% if appId == application.id %} active {% endif %}">{{ application.name }}</a>
+    {% endfor %}
 </div>
 {% endblock %}
