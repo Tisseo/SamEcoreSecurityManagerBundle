@@ -50,9 +50,13 @@ class BusinessRightVoter implements VoterInterface
     public function vote(TokenInterface $token, $object, array $attributes)
     {
         $result = VoterInterface::ACCESS_ABSTAIN;
-        if ($token->getUser() == 'anon.')
-            return ($result);
 
+        if ($token->getUser() == 'anon.') {
+            return ($result);
+        }
+        if (in_array('ROLE_API', $token->getUser()->getRoles())) {
+            return VoterInterface::ACCESS_GRANTED;
+        }
         if ($token->getUser()->isSuperAdmin()) {
             return VoterInterface::ACCESS_GRANTED;
         }
