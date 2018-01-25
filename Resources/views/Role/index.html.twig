@@ -31,7 +31,7 @@
             <td>{{ entity.canonicalName }}</td>
             <td>{{ entity.application.name }}</td>
             {% if is_granted('BUSINESS_MANAGE_ROLE') %}
-                <td>
+                <td class="action">
                     <div class="btn-group">
                         <a class="btn btn-default" href="{{ path('sam_role_edit', { 'id': entity.id }) }}">
                             <span class="glyphicon glyphicon-pencil"></span>
