@@ -11,6 +11,8 @@ namespace CanalTP\SamEcoreSecurityBundle\Form\EventListener;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ObjectChoiceList;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -48,7 +50,7 @@ class CreateRoleListener implements EventSubscriberInterface
 
         $form->add(
             'applications',
-            'choice',
+            ChoiceType::class,
             array(
                 'label'       => 'role.field.application',
                 'multiple'    => true,
@@ -61,7 +63,7 @@ class CreateRoleListener implements EventSubscriberInterface
 
         $form->add(
             'rolesByApplication',
-            'collection',
+            CollectionType::class,
             array(
                 'label'        => 'role.field.parent.label',
                 'type'         => 'sam_copy_role_by_application',

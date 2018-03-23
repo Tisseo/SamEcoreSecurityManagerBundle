@@ -1,6 +1,6 @@
 business_right.edit.title: 'Modification des permissions'
 business_right.edit.submit: Sauvegarder
-business_right.edit.column.permission.title: __business_right.edit.column.permission.title
+business_right.edit.column.permission.title: Liste des permissions
 role.list.back: __role.list.back
 role.list.add: __role.list.add
 role.delete.title: __role.delete.title

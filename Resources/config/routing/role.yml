@@ -1,26 +1,26 @@
 sam_role:
-    pattern:  /
+    path:  /
     defaults: { _controller: "CanalTPSamEcoreSecurityBundle:Role:index" }
 
 sam_role_new:
-    pattern:  /new
+    path:  /new
     defaults: { _controller: "CanalTPSamEcoreSecurityBundle:Role:new" }
 
 sam_role_create:
-    pattern:  /create
+    path:  /create
     defaults: { _controller: "CanalTPSamEcoreSecurityBundle:Role:create" }
-    requirements: { _method: post }
+    requirements: { attribute: post }
 
 sam_role_edit:
-    pattern:  /{id}/edit
+    path:  /{id}/edit
     defaults: { _controller: "CanalTPSamEcoreSecurityBundle:Role:edit" }
 
 sam_role_update:
-    pattern:  /{id}/update
+    path:  /{id}/update
     defaults: { _controller: "CanalTPSamEcoreSecurityBundle:Role:update" }
-    requirements: { _method: post|put }
+    requirements: { attribute: post|put }
 
 sam_role_delete:
-    pattern:  /{id}/delete
+    path:  /{id}/delete
     defaults: { _controller: "CanalTPSamEcoreSecurityBundle:Role:delete" }
-    requirements: { _method: post|delete|get }
+    requirements: { attribute: post|delete|get }

@@ -6,6 +6,6 @@ services:
         class: %sam_business_right.type.class%
         arguments:
            - '@sam.business_component'
-           - @security.context
+           - '@security.authorization_checker'
         tags:
             - { name: form.type, alias: sam_business_right }

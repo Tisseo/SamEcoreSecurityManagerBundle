@@ -29,7 +29,7 @@ class BusinessRightController extends Controller
     private function buildForm($application)
     {
         $form = $this->createForm(
-            new ApplicationRoleType(),
+            ApplicationRoleType::class,
             $application,
             array(
                 'action' => $this->generateUrl(
