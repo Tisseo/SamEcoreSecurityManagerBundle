@@ -24,8 +24,8 @@
     {% for key, permission in form.roles[0].businessPermissions.vars.choices %}
         <tr>
             <td>
-                {{ permission.data.name|trans({}, 'permissions') }}<br>
-                <i>{{ permission.data.description|trans({}, 'permissions') }}<br></i>
+                {{ permission.data.name|trans }}<br>
+                <i>{{ permission.data.description|trans }}<br></i>
             </td>
             {% for role in form.roles %}
             <td>

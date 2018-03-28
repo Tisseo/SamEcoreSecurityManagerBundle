@@ -10,19 +10,13 @@ namespace CanalTP\SamEcoreSecurityBundle\Form\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\Extension\Core\ChoiceList\ObjectChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Validator\Constraints\NotBlank;
-
-use CanalTP\SamCoreBundle\Entity\Role;
 use CanalTP\SamCoreBundle\Entity\UserApplicationRole;
-use CanalTP\SamCoreBundle\Entity\Application;
-use CanalTP\SamCoreBundle\CanalTPSamCoreBundle;
+use CanalTP\SamEcoreSecurityBundle\Form\Type\Role\CopyRoleByApplicationType;
 
 class CreateRoleListener implements EventSubscriberInterface
 {
@@ -56,8 +50,18 @@ class CreateRoleListener implements EventSubscriberInterface
                 'multiple'    => true,
                 'expanded'    => true,
                 'required'    => false,
-                'choice_list' => new ObjectChoiceList($applications, 'name'),
-                'constraints' => array(new NotBlank())
+                'constraints' => array(new NotBlank()),
+                'choices_as_values' => true,
+                'choices' => $applications,
+                'choice_name' => function ($application, $key) {
+                    return $application->getId();
+                },
+                'choice_value' => function ($application) {
+                    return $application->getId();
+                },
+                'choice_label' => function ($application) {
+                    return $application->getName();
+                },
             )
         );
 
@@ -66,11 +70,11 @@ class CreateRoleListener implements EventSubscriberInterface
             CollectionType::class,
             array(
                 'label'        => 'role.field.parent.label',
-                'type'         => 'sam_copy_role_by_application',
+                'entry_type'         => CopyRoleByApplicationType::class,
                 'allow_add'    => false,
                 'allow_delete' => false,
                 'by_reference' => false,
-                'options'      => array(
+                'entry_options'      => array(
                     'required'       => true,
                     'error_bubbling' => false,
                     'attr'           => array('class' => 'application-role-box')

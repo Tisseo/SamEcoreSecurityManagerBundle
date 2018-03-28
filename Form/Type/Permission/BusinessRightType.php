@@ -4,6 +4,7 @@ namespace CanalTP\SamEcoreSecurityBundle\Form\Type\Permission;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ObjectChoiceList;
+use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -50,19 +51,16 @@ class BusinessRightType extends AbstractType
                 'expanded'    => true,
                 'required'    => false,
                 'disabled'    => $disabled,
-                'choice_list' => new ObjectChoiceList($permissions, 'name', array(), null, 'id'),
-            )//,https://github.com/symfony/symfony/pull/10309
-//            array(
-//                'choices_attr' => function ($choice) {
-//                    debug($choice);die();
-//            
-//                    $attributes = array();
-//
-//                    $attributes['disabled'] = true;
-//
-//                    return $attributes;    
-//                }
-//            )
+                'choices_as_values' => true,
+                'choices' => $permissions,
+                'choice_name' => function ($permission, $key) {
+                    return $key;
+                },
+                'choice_value' => function ($permission) {
+                    return $permission->getId();
+                },
+
+            )
         );
 
         // Change Permissions in PermissionInterface[]
@@ -70,9 +68,6 @@ class BusinessRightType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($permissions) {
                 $data = $event->getData();
-//                if (!$data->getIsEditable()) {
-//                    return null;
-//                }
                 $permissionsArray = array();
                 foreach ($data->getPermissions() as $key => $permission) {
                     $model = new BusinessPermission();

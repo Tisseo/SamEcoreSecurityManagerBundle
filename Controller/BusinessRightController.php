@@ -13,7 +13,7 @@ class BusinessRightController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $msg = $this->get('translator')->trans('message.notice.business_right.edit');
+            $msg = 'message.notice.business_right.edit';
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($form->getData());

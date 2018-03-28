@@ -5,7 +5,7 @@ namespace CanalTP\SamEcoreSecurityBundle\Form\Type\Role;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use CanalTP\SamEcoreSecurityBundle\Form\Type\Role\RoleType;
 
 /**
  * Description of RoleType
@@ -27,7 +27,7 @@ class CreateRoleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('role', 'sam_role');
+        $builder->add('role', RoleType::class);
 
         $builder->addEventSubscriber($this->roleListener);
     }
