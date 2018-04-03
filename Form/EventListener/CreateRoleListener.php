@@ -51,7 +51,6 @@ class CreateRoleListener implements EventSubscriberInterface
                 'expanded'    => true,
                 'required'    => false,
                 'constraints' => array(new NotBlank()),
-                'choices_as_values' => true,
                 'choices' => $applications,
                 'choice_name' => function ($application, $key) {
                     return $application->getId();

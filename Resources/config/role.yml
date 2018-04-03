@@ -6,24 +6,24 @@ parameters:
 
 services:
     sam_create_role.type:
-        class: %sam_create_role.type.class%
+        class: '%sam_create_role.type.class%'
         arguments:
            - '@sam_create_role_listener'
         tags:
             - { name: form.type, alias: sam_create_role }
 
     sam_role.type:
-        class: %sam_role.type.class%
+        class: '%sam_role.type.class%'
         tags:
             - { name: form.type, alias: sam_role }
 
     sam_create_role_listener:
-        class: %sam_create_role_listener.class%
+        class: '%sam_create_role_listener.class%'
         arguments:
            - '@doctrine.orm.entity_manager'
 
     sam_copy_role_by_application.type:
-        class: %sam_copy_role_by_application.type.class%
+        class: '%sam_copy_role_by_application.type.class%'
         arguments:
             - '@translator'
         tags:

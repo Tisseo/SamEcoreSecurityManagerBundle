@@ -166,7 +166,7 @@ class RoleController extends AbstractController
         $editForm = $this->createEditForm($role);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'role.flash.updated');
 
@@ -192,7 +192,7 @@ class RoleController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CanalTPSamCoreBundle:Role')->find($id);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Role entity.');

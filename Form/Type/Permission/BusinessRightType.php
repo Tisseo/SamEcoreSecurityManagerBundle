@@ -51,7 +51,6 @@ class BusinessRightType extends AbstractType
                 'expanded'    => true,
                 'required'    => false,
                 'disabled'    => $disabled,
-                'choices_as_values' => true,
                 'choices' => $permissions,
                 'choice_name' => function ($permission, $key) {
                     return $key;
