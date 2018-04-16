@@ -29,7 +29,7 @@
             </td>
             {% for role in form.roles %}
             <td>
-                {{ form_widget(role.businessPermissions[key]) }}
+                {{ form_widget(role.businessPermissions[key], {'label_attr': {'class': 'no-label'}}) }}
             </td>
             {% endfor %}
         </tr>

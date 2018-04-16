@@ -59,7 +59,7 @@ class BusinessRightType extends AbstractType
                     return $permission->getId();
                 },
                 'choice_label' => function($permission){
-                    return ' '; // Hack TODO do it with css ?
+                    return $permission->getName();
                 }
 
             )
