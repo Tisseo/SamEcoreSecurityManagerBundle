@@ -69,7 +69,7 @@ class BusinessRightVoter implements VoterInterface
 
             $result = VoterInterface::ACCESS_DENIED;
             foreach ($roles as $role) {
-                if ($this->checkPermission($attribute, $role->getPermissions())) {
+                if ($this->checkPermission($role->getPermissions(), $attribute)) {
                     return VoterInterface::ACCESS_GRANTED;
                 }
             }
